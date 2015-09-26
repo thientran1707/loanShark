@@ -49,22 +49,33 @@ app.run(function($ionicPlatform) {
         }
       }
     })
-    .state('app.transactions', {
-      url: '/transactions',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/transactions.html',
-          controller: 'TransactionsCtrl'
-        }
-      }
-    })
 
-  .state('app.single', {
-    url: '/transactions/:playlistId',
+  .state('app.transactions', {
+    url: '/transactions',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/transactions.html',
+        controller: 'TransactionsCtrl'
+      }
+    }
+  })
+
+    .state('app.friends', {
+      url: '/friends',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/friends.html',
+          controller: 'FriendsCtrl'
+        }
+      }
+    })  
+
+  .state('app.single', {
+    url: '/transactions/:transactionId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/transaction.html',
+        controller: 'TransactionCtrl'
       }
     }
   });
