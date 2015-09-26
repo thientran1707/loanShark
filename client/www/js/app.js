@@ -67,17 +67,7 @@ app.run(function($ionicPlatform) {
           controller: 'FriendsCtrl'
         }
       }
-    })    
-
-  .state('app.friend', {
-    url: '/friends/:friendId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/friend.html',
-        controller: 'FriendCtrl'
-      }
-    }
-  })
+    })  
 
   .state('app.single', {
     url: '/transactions/:playlistId',
