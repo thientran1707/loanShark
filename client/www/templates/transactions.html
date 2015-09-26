@@ -1,0 +1,9 @@
+<ion-view view-title="Playlists">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="transaction in transactions" href="#/app/playlists/{{transaction.id}}">
+        {{transaction.name}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

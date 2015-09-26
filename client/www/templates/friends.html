@@ -1,0 +1,12 @@
+<ion-view view-title="Friends">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="friend in friends" href="#/app/friends/{{friend.id}}">
+        {{friend.name}} - {{ friend.items}}
+        <div>
+          Friends Since - {{ Utility.parseDate(friend.date) }}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
