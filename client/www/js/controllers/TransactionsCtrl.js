@@ -4,6 +4,7 @@ app.controller('TransactionsCtrl', [
 	function($scope, Transactions) {
 
 		$scope.transactions = Transactions.get();
+		console.log($scope.transactions);
 
 	  $scope.playlists = [
 	    { title: 'Reggae', id: 1 },

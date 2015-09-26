@@ -27,7 +27,7 @@ app.factory("Transactions", [
 			get: function() {
 				if (Config.mock) {
 					// get mock data
-					getMock();
+					return getMock();
 				} else {
 					// do api call
 				}
