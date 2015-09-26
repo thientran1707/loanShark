@@ -30,7 +30,8 @@ router.get('/login', function(req, res, next) {
   });
 });
 
-router.get('/send-test', function(req, res, next) {
+/* Testing only */
+/*router.get('/send-test', function(req, res, next) {
   platform.post('/account/~/extension/~/sms', {
       body: {
           from: {phoneNumber:'+18024486659'}, // Your sms-enabled phone number
@@ -44,6 +45,6 @@ router.get('/send-test', function(req, res, next) {
   }).catch(function(e) {
       alert('Error: ' + e.message);
   });
-});
+});*/
 
 module.exports = router;
