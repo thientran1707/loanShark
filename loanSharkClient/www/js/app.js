@@ -49,18 +49,18 @@ app.run(function($ionicPlatform) {
         }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+    .state('app.transactions', {
+      url: '/transactions',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
+          templateUrl: 'templates/transactions.html',
           controller: 'TransactionsCtrl'
         }
       }
     })
 
   .state('app.single', {
-    url: '/playlists/:playlistId',
+    url: '/transactions/:playlistId',
     views: {
       'menuContent': {
         templateUrl: 'templates/playlist.html',
@@ -69,5 +69,5 @@ app.run(function($ionicPlatform) {
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/transactions');
 });
