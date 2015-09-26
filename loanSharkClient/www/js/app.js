@@ -54,7 +54,7 @@ app.run(function($ionicPlatform) {
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'TransactionsCtrl'
         }
       }
     })
