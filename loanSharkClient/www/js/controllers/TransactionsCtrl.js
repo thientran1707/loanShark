@@ -1,19 +1,31 @@
+/*
+ * convert transaction logic to item logic
+ */
 app.controller('TransactionsCtrl', [
 	"$scope",
 	"Transactions",
 	function($scope, Transactions) {
 
+		_.each(Transactions.get(), function(transaction, index) {
+			_.each(transaction.items, function(item, index) {
+
+			});
+		});
+
 		$scope.transactions = Transactions.get();
 		console.log($scope.transactions);
 
-	  $scope.playlists = [
-	    { title: 'Reggae', id: 1 },
-	    { title: 'Chill', id: 2 },
-	    { title: 'Dubstep', id: 3 },
-	    { title: 'Indie', id: 4 },
-	    { title: 'Rap', id: 5 },
-	    { title: 'Cowbell', id: 6 }
-	  ];
+		$scope.listTransactions = function(transaction) {
+			if (transaction.items.length == 1) {
+				return transaction.name + ": " + showItem(transaction.items[0]);
+			} else {
+				return transaction.name + ": " + transaction.items.length + ' items';
+			}
+		};
+
+		function showItem(item) {
+			return item.name + "," + item.category + "," + item.dateDue;
+		}
 	}
 ]);
 
