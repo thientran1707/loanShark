@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var db = require('./models');
+
 var app = express();
 
 // view engine setup
@@ -15,13 +17,17 @@ var app = express();
 // app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/bower_components',  express.static(__dirname + '/../bower_components'));
+app.use(express.static(path.join(__dirname, '/../public')));
+
+console.log('Start connecting to database!');
+db.start();
 
 app.use('/', routes);
 app.use('/users', users);
