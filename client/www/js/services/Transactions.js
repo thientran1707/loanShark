@@ -9,7 +9,7 @@ app.factory("Transactions", [
 					id: 1, 
 					items: [
 						{id: 1, name: "Money for Game", category: "Money", dateDue: Date()},
-						{id: 2, name: "Laundry", category: "Clothes", dateDue: Date()}
+						// {id: 2, name: "Laundry", category: "Clothes", dateDue: Date()}
 					]
 				},
 				{ name: "Ashley Gomez", 
