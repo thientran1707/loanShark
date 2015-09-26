@@ -49,15 +49,16 @@ app.run(function($ionicPlatform) {
         }
       }
     })
-    .state('app.transactions', {
-      url: '/transactions',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/transactions.html',
-          controller: 'TransactionsCtrl'
-        }
+
+  .state('app.transactions', {
+    url: '/transactions',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/transactions.html',
+        controller: 'TransactionsCtrl'
       }
-    })
+    }
+  })
 
     .state('app.friends', {
       url: '/friends',
@@ -80,11 +81,11 @@ app.run(function($ionicPlatform) {
   })
 
   .state('app.single', {
-    url: '/transactions/:playlistId',
+    url: '/transactions/:transactionId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+        templateUrl: 'templates/transaction.html',
+        controller: 'TransactionCtrl'
       }
     }
   });
