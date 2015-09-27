@@ -1,7 +1,7 @@
 app.factory("Config", function(){
 
 	return {
-		mock: false
+		mock: true
 	};
 
 });

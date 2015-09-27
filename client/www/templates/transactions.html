@@ -1,12 +1,15 @@
 <ion-view view-title="Transactions">
   	<ion-content>
 	    <ion-list>
+	    <div class="item item-button-right">
 	        <label class="toggle">
 			<input type="checkbox" ng-click="switchView()">
 				<div class="track">
 					<div class="handle"></div>
 				</div>
 			</label>
+			<button class="button button-icon ion-plus" ng-click="newProject()">
+		</div>
 			<div ng-if="doShowItemTimeView()">
 				<ion-item ng-repeat="item in itemsTimeView" href="#/app/transactions/{{item}}">
 					{{ showItemTimeView(item) }}

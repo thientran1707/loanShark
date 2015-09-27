@@ -1,7 +1,8 @@
 app.factory("Transactions", [
 	"$http",
 	"Config",
-	function($http, Config) {
+	"$q",
+	function($http, Config, $q) {
 
 		function getMock() {
 			return [
@@ -25,11 +26,17 @@ app.factory("Transactions", [
 		return {
 
 			get: function() {
+				var deferred = $q.defer();
 				if (Config.mock) {
 					// get mock data
 					return getMock();
 				} else {
 					// do api call
+					$http.get("http://localhost:3000/api/users/getBorrowers/:id")
+						.success(function(data){
+							deferred.resolve(data);
+						});
+					return deferred.promise;
 				}
 			}
 

@@ -52,6 +52,10 @@ app.controller('TransactionsCtrl', [
 				$scope.isShowItemTimeView = true;
 			}
 		}
+
+		$scope.addTransaction = function() {
+			// placeholder for add button
+		}
 	}
 ]);
 
