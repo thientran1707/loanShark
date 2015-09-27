@@ -34,7 +34,10 @@ router.post('/signup', function(req, res, next) {
           throw err;
         }
         console.log('User created!');
-        res.end();
+        User.findOne({userName: req.body.username}, function(err, user) {
+          console.log('sending user data now');
+          res.json(user);
+        });
       });
     }
   });
