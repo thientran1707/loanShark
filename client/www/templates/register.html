@@ -1,0 +1,22 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Register</h1>
+    <div class="buttons">
+      <button class="button button-clear">Back</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="registerUser(user)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="user.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="text" ng-model="user.password">
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
