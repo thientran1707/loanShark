@@ -45,7 +45,7 @@ app.controller('TransactionsCtrl', [
 		};
 
 		$scope.showItemTimeView = function(item) {
-			return item.hostname + ": " + item.name + "," + item.category;
+			return item.hostname + ": " + item.name + "," + item.description;
 		};
 
 		$scope.showItemGroupView = function(item) {

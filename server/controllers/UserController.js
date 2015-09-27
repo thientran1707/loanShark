@@ -2,6 +2,8 @@
 
 var User = require('../models/User');
 var Loan = require('../models/Loan');
+var Item = require('../models/Item');
+
 var UserController = {};
 
 UserController.retrieve = function(req, res) {
@@ -110,16 +112,35 @@ UserController.getLenders = function(req, res) {
         return loan.owner;
       });
 
-      User.find({_id: {$in: lenderIds}}, function(err, borrowers){
+      User.find({_id: {$in: lenderIds}}, function(err, lenders){
         if (err) {
           res.status(500).json(err);
         } else {
-          res.status(200).json(borrowers);
+          res.status(200).json(lenders);
         }
       });
     }
   });
 };
+
+UserController.getBorrowItems = function(req, res) {
+  var id = req.params.id;
+  var borrowerId = req.params.borrowerId;
+
+  Loan.find({owner: id, borrower: borrowerId}, function(err, loans) {
+    var itemIds = loans.map(function(loan) {
+      return loan.item;
+    });
+
+    Item.find({_id: {$in: itemIds}}, function(err, items) {
+      if (err) {
+        res.status(400).json(err);
+      } else {
+        res.status(200).json(items);
+      }
+    });
+  });
+}
 
 UserController.getBorrowers = function(req, res) {
   var userId =  req.params.id;
@@ -132,11 +153,11 @@ UserController.getBorrowers = function(req, res) {
         return loan.borrower;
       });
 
-      User.find({_id: {$in: borrowerIds}}, function(err, lenders) {
+      User.find({_id: {$in: borrowerIds}}, function(err, borrowers) {
         if (err) {
           res.status(500).json(err);
         } else {
-          res.status(200).json(lenders);
+          res.status(200).json(borrowers);
         }
       });
     }
