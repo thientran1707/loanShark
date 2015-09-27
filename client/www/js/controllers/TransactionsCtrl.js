@@ -69,7 +69,6 @@ app.controller('TransactionsCtrl', [
 		};
 
 		$scope.switchTest = function() {
-			console.log($scope.type);
 			$state.go("app.add_transaction", {type: $scope.type});
 		};
 	}
