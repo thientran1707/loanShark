@@ -55,7 +55,7 @@ app.delete('/api/loans/:id', Controllers.Loan.delete);
 //console.log(task.sendMessage)
 /* Send message to remind */
 //setInterval(1000 * 60, task.sendMessage);
-setInterval(task.sendMessage, 1000 * 60);
+//setInterval(task.sendMessage, 1000 * 60);
 
 app.use(passport.initialize());
 app.use(passport.session());

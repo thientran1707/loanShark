@@ -128,6 +128,7 @@ UserController.getBorrowItems = function(req, res) {
   var borrowerId = req.params.borrowerId;
 
   Loan.find({owner: id, borrower: borrowerId}, function(err, loans) {
+    loans = loans || [];
     var itemIds = loans.map(function(loan) {
       return loan.item;
     });

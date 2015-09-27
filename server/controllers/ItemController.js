@@ -32,8 +32,10 @@ ItemController.create = function(req, res) {
       res.status(500).json(err);
     } else {
       var id = item._id;
-        User.findById(owner, function(err, users) {
-         for (var i = 0; i < users.length; i++) {
+      User.findById(owner, function(err, users) {
+        var users = users || [];
+        
+        for (var i = 0; i < users.length; i++) {
            var user = users[i];
            var items = user.item;
           items.push(id);
