@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('../models/User');
+var Loan = require('../models/Loan');
 var UserController = {};
 
 UserController.retrieve = function(req, res) {
@@ -89,6 +90,51 @@ UserController.delete = function(req, res) {
           res.status(500).json(err);
         } else {
   	      res.status(200).json(user);
+        }
+      });
+    }
+  });
+};
+
+UserController.getLenders = function(req, res) {
+  var userId = req.params.id;
+
+  Loan.find({borrower: userId}, function(err, loans) {
+
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      var lenderIds = loans.map(function(loan) {
+        return loan.owner;
+      });
+
+      User.find({_id: {$in: lenderIds}}, function(err, borrowers){
+        if (err) {
+          res.status(500).json(err);
+        } else {
+          res.status(200).json(borrowers);
+        }
+      });
+    }
+  });
+};
+
+UserController.getBorrowers = function(req, res) {
+  var userId =  req.params.id;
+
+  Loan.find({owner: userId}, function(err, loans) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      var borrowerIds = loans.map(function(loan) {
+        return loan.borrower;
+      });
+
+      User.find({_id: {$in: borrowerIds}}, function(err, lenders) {
+        if (err) {
+          res.status(500).json(err);
+        } else {
+          res.status(200).json(lenders);
         }
       });
     }
