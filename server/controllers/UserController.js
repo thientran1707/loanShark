@@ -19,14 +19,16 @@ UserController.create = function(req, res) {
   var password = req.body.password;
   var phone = req.body.phone;
   var items = req.body.items;
-  var friends = req.body.friends; 
+  var friends = req.body.friends;
+  var createdDate = new Date(); 
 
   var user = new User({
     userName: userName,
     password: password,
     phone: phone,
     items: items,
-    friends: friends
+    friends: friends,
+    createdDate: createdDate
   });
 
   user.save(function(err, user) {

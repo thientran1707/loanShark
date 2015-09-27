@@ -8,7 +8,8 @@ var schema = new Schema({
   items: [Schema.Types.ObjectId],
   friends: [Schema.Types.ObjectId],
   userName: {type: String, required: true},
-  password: {type: String, required: true}
+  password: {type: String, required: true},
+  createdDate: {type: Date}
 });
 
 module.exports = mongoose.model('User', schema);
