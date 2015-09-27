@@ -34,6 +34,5 @@ app.factory("Transactions", [
 			}
 
 		};
-
 	}
 ]);
