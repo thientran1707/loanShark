@@ -26,7 +26,7 @@ app.factory("Transactions", [
 
 		return {
 
-			get: function() {
+			get: function(type) {
 				var deferred = $q.defer();
 				if (Config.mock) {
 					// get mock data

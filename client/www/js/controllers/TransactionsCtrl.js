@@ -16,7 +16,7 @@ app.controller('TransactionsCtrl', [
 		// get both TimeView data and GroupView data at once
 		function getItem(Transactions, state) {
 			var i = 0;
-			_.each(Transactions.get(), function(transaction, index) {
+			_.each(Transactions.get($scope.type), function(transaction, index) {
 				$scope.itemsGroupView[i] = transaction;
 				_.each(transaction.items, function(item, index) {
 					item.id = i;
@@ -28,7 +28,7 @@ app.controller('TransactionsCtrl', [
 		}
 
 		function getAPIItems() {
-			Transactions.get().then(function(data){
+			Transactions.get($scope.type).then(function(data){
 				_.each(Transactions.get(), function(transaction, index) {
 				$scope.itemsGroupView[index] = transaction;
 					_.each(transaction.items, function(item, index) {
@@ -46,19 +46,19 @@ app.controller('TransactionsCtrl', [
 
 		$scope.doShowItemTimeView = function() {
 			return $scope.isShowItemTimeView == true;
-		}
+		};
 
 		$scope.doShowItemGroupView = function() {
 			return $scope.isShowItemTimeView == false;
-		}
+		};
 
 		$scope.showItemTimeView = function(item) {
 			return item.hostname + ": " + item.name + "," + item.category;
-		}
+		};
 
 		$scope.showItemGroupView = function(item) {
 			return item.name + ": " + item.items.length;
-		}
+		};
 
 		$scope.switchView = function() {
 			if ($scope.isShowItemTimeView == true) {
@@ -66,14 +66,11 @@ app.controller('TransactionsCtrl', [
 			} else {
 				$scope.isShowItemTimeView = true;
 			}
-		}
-
-		$scope.addTransaction = function() {
-			// placeholder for add button
-		}
+		};
 
 		$scope.switchTest = function() {
-			$state.go("app.new_transaction", {type: $scope.type});
+			console.log($scope.type);
+			$state.go("app.add_transaction", {type: $scope.type});
 		};
 	}
 

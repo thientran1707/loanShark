@@ -102,12 +102,12 @@ app.run(function($ionicPlatform) {
     }
   })
 
-  .state('app.new_transaction', {
-    url: '/transactions/new?type=:borrowerType',
+  .state('app.add_transaction', {
+    url: '/transactions/add?type=:borrowerType',
     views: {
       'menuContent': {
-        templateUrl: 'templates/new_transaction.html',
-        controller: "NewTransactionCtrl"
+        templateUrl: 'templates/add_transaction.html',
+        controller: "AddTransactionCtrl"
       }
     }
   })

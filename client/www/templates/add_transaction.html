@@ -7,13 +7,17 @@
           <input type="text" ng-model="user.username">
         </label>
         <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="user.password">
-        </label>
-        <label class="item item-input">
           <span class="input-label">Telephone</span>
           <input type="text" ng-model="user.telephone">
         </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Items
+          </div>
+          <select>
+            <option ng-repeat="item in items" value="{{item._id}}">{{item.name}}</option>
+          </select>
+        </label>        
         <label class="item item-input">
           <span class="input-label">Due Date</span>
           <input type="date" class="datepicker" ng-model="user.dateDue" />

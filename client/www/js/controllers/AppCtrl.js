@@ -38,8 +38,7 @@ app.controller('AppCtrl', [
 
       $http.post("http://localhost:3000/users/login", $scope.loginData)
         .success(function(data){
-          console.log('data is ', data);
-          Session.login($scope.loginData);
+          Session.login(data);
           $state.go('app.friends');
         });
 
