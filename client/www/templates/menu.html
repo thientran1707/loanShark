@@ -28,6 +28,9 @@
         <ion-item menu-close ng-click="login()" ng-show="!Session.isLoggedIn()">
           Login
         </ion-item>
+         <ion-item menu-close href="#/app/register" ng-show="!Session.isLoggedIn()">
+          Register
+        </ion-item>
         <ion-item menu-close href="#/app/profile" ng-show="Session.isLoggedIn()">
           Profile
         </ion-item>
