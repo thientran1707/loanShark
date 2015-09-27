@@ -11,7 +11,7 @@ var User = require('./models/User');
 var cors = require("cors");
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var task = require('./jobs/task.js');
 
 var db = require('./models');
 var Controllers = require('./controllers');
@@ -51,6 +51,10 @@ app.post('/api/loans', Controllers.Loan.create);
 app.get('/api/loans/:id', Controllers.Loan.get);
 app.put('/api/loans/:id', Controllers.Loan.update);
 app.delete('/api/loans/:id', Controllers.Loan.delete);
+//console.log(task.sendMessage)
+/* Send message to remind */
+//setInterval(1000 * 60, task.sendMessage);
+setInterval(task.sendMessage, 1000 * 60);
 
 app.use(passport.initialize());
 app.use(passport.session());

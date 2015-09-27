@@ -3,6 +3,7 @@ var router = express.Router();
 var RCSDK = require('rcsdk');
 var passport = require('passport');
 var User = require('../models/User');
+var Loan = require('../models/Loan');
 
 var rcsdk = new RCSDK({
     server: 'https://platform.devtest.ringcentral.com',
@@ -62,11 +63,13 @@ router.post('/sendMessage', function(req, res, next) {
         text: req.body.content
       }
   }).then(function(response) {
-      alert('Success: ' + response.data.id);
-      response.end('hi!');
+      console.log('Success: ', response.data.id);
+      //alert('Success: ' + response.data.id);
+      res.status(200).json(response);
   }).catch(function(e) {
-      alert('Error: ' + e.message);
-      response.end('error is ', e);
+      console.log('Error', e.message);
+      //alert('Error: ' + e.message);
+      res.status(400).json(e);
   });
 });
 
