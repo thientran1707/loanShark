@@ -70,22 +70,4 @@ router.post('/sendMessage', function(req, res, next) {
   });
 });
 
-router.get('/sendMessage', function(req, res, next) {
-  platform.post('/account/~/extension/~/sms', {
-      body: {
-        from: {phoneNumber:'+18024486659'}, // Your sms-enabled phone number
-        to: [
-            {phoneNumber: '+14088240895'} // Second party's phone number
-        ],
-        text: 'hello hello hello'
-      }
-  }).then(function(response) {
-      alert('Success: ' + response.data.id);
-      response.end('hi!');
-  }).catch(function(e) {
-      alert('Error: ' + e.message);
-      response.end('error is ', e);
-  });
-});
-
 module.exports = router;
