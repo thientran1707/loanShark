@@ -3,7 +3,8 @@ app.controller("ProfileCtrl", [
 	"Friends",
 	"$stateParams",
 	"$ionicPopup",
-	function($scope, Friends, $stateParams, $ionicPopup) {
+	'$http',
+	function($scope, Friends, $stateParams, $ionicPopup, $http) {
 
 		$scope.updateUser = function(user) {
 			Friends.update(user).then(function(data){
@@ -15,9 +16,18 @@ app.controller("ProfileCtrl", [
 			     $("body").removeClass("popup-open");
 			     $(".backdrop").css("visibility", "hidden");
 			     $(".popup-container").remove();
-			   });			
+			   });
 			});
-		};	
+		};
+
+		$scope.updateUserTest = function() {
+			console.log('testing');
+			$http.get('http://localhost:3000/users/getInfo').success(function(data) {
+				console.log('the data is ', data);
+			});
+		};
+
+		$scope.updateUserTest();
 
 	}
 ]);

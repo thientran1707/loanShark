@@ -39,6 +39,11 @@ router.post('/signup', function(req, res, next) {
   });
 });
 
+router.get('/getInfo', function(req, res, next) {
+  console.log('res is ', req.user);
+  console.log('res is ', req.session);
+});
+
 router.get('/login', function(req, res, next) {
   console.log('we are going to login now');
   platform.authorize({

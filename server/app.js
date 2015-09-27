@@ -57,8 +57,10 @@ app.delete('/api/loans/:id', Controllers.Loan.delete);
 //setInterval(1000 * 60, task.sendMessage);
 //setInterval(task.sendMessage, 1000 * 60);
 
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.use('/', routes);
 app.use('/users', users);
@@ -78,14 +80,14 @@ passport.use(new LocalStrategy(function(username, password, done) {
     User.findOne({userName: username}, function(err, user) {
       if (!user) {
         console.log('This user doesn\'t exist!');
-        return done(err);
+        done(err);
       } else {
         if (user.password !== password) {
           console.log('Authentication failed, wrong password');
-          return done(err);
+          done(err);
         } else {
           console.log('Authentication success!');
-          return done(err, user);
+          done(err, user);
         }
       }
     });
