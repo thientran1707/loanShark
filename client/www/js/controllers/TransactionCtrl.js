@@ -7,6 +7,7 @@ app.controller('TransactionCtrl', [
 	"$scope",
 	"$stateParams",
 	"Utility",
+	"Transaction",
 	function($location, $scope, $stateParams, Utility) {
 
 		console.log($stateParams);

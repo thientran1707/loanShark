@@ -36,7 +36,6 @@ app.factory("Transactions", [
 					var id = Session.getCurrentId();
 					$http.get("http://localhost:3000/api/users/getBorrowers/" + id)
 						.success(function(data){
-							console.log(data);
 							deferred.resolve(data);
 						});
 				}

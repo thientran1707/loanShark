@@ -9,17 +9,14 @@
 				</div>
 			</label>
 			<a class="button button-icon ion-plus" ng-click="switchTest()"></a>
-		</div>
-			<div ng-if="doShowItemTimeView()">
-				<ion-item ng-repeat="item in itemsTimeView" href="#/app/transactions/{{item}}">
-					{{ showItemTimeView(item) }}
+		</div>	
+			<ion-item ng-repeat="transaction in transactions" href="#/app/transactions/{{transaction._id}}">
+				{{transaction.userName}} - {{transaction.items.length}} items
+
+				<ion-item ng-repeat="item in transaction.items">
+					{{ item.name }}
 				</ion-item>
-			</div>
-			<div ng-if="doShowItemGroupView()">
-				<ion-item ng-repeat="item in itemsGroupView" href="#/app/transactions/group/{{item}}">
-					{{ showItemGroupView(item) }}
-				</ion-item>
-			</div>
+			</ion-item>
 	    </ion-list>
   	</ion-content>
 </ion-view>
