@@ -13,11 +13,23 @@ app.factory("Session", [
 
 			login: function(object) {
 				online = true;
-				session = object;
+				console.log(object);
+				sessionStorage.session = JSON.stringify(object);
 			},
 
 			logOut: function() {
-				session.online = false;
+				online = false;
+			},
+
+			getSession: function() {
+				if (sessionStorage.session) {
+					return JSON.parse(sessionStorage.session);
+				}
+				return {};
+			},
+
+			getCurrentId: function() {
+				return this.getSession()._id;
 			}
 
 		}
