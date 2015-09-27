@@ -15,11 +15,17 @@ app.controller("AddTransactionCtrl", [
 			$scope.items = data;
 		});
 
-		function parseTimeDate(transaction) {
-			debugger;
+		function parseTimeDate(transaction, type) {
+			var date = transaction[type + "Date"];
+			var time = transaction[type + "Time"];
+			date.setHours(time.getHours());
+			date.setMinutes(time.getMinutes());
+			date.setMilliseconds(time.getMilliseconds());
+			return date;
 		}
 
 		$scope.addTransaction = function(transaction) {
+			transaction.owner = Session.getCurrentId();
 			transaction.dueDate = parseTimeDate(transaction, "due");
 			transaction.reminderDate = parseTimeDate(transaction, "remind");
 			$http.post("http://localhost:3000/api/loans", transaction).success(function(data){
