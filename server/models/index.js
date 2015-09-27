@@ -19,10 +19,4 @@ db.start = function() {
 
 db.connection = mongoose.connection;
 
-db.classes = {
-  User: require('./User'),
-  Loan: require('./Loan'),
-  Item: require('./Item')
-};
-
 module.exports = db;
