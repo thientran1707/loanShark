@@ -1,7 +1,8 @@
 app.factory("Friends", [
 	"$http",
 	"Config",
-	function($http, Config) {
+	"$q",
+	function($http, Config, $q) {
 
 		function getMock() {
 			return [
@@ -13,11 +14,16 @@ app.factory("Friends", [
 		return {
 
 			get: function() {
+				var deferred = $q.defer();
 				if (Config.mock) {
 					return getMock();
 				} else {
-
-				}
+					$http.get("http://localhost:3000/api/users")
+						.success(function(data){
+							deferred.resolve(data);
+						});
+				}	
+				return deferred.promise;
 			}
 
 		};

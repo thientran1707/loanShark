@@ -4,7 +4,9 @@ app.controller("FriendsCtrl", [
 	"Utility",
 	function($scope, Friends, Utility) {
 
-		$scope.friends = Friends.get();
+		Friends.get().then(function(data){
+			$scope.friends = data;
+		});
 		$scope.Utility = Utility;
 
 	}

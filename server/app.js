@@ -8,7 +8,7 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/User');
-
+var cors = require("cors");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -18,6 +18,7 @@ var Controllers = require('./controllers');
 
 var app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
