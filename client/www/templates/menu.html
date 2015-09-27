@@ -16,15 +16,7 @@
         <i class="icon ion-home"></i>
         Home
       </a>
-      <a class="tab-item">
-        <i class="icon ion-star"></i>
-        Favorites
-      </a>
-      <a class="tab-item">
-        <i class="icon ion-gear-a"></i>
-        Settings
-      </a>
-    </div>    
+    </div>
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
@@ -36,24 +28,27 @@
         <ion-item menu-close ng-click="login()" ng-show="!Session.isLoggedIn()">
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/profile">
+         <ion-item menu-close href="#/app/register" ng-show="!Session.isLoggedIn()">
+          Register
+        </ion-item>
+        <ion-item menu-close href="#/app/profile" ng-show="Session.isLoggedIn()">
           Profile
         </ion-item>
-        <ion-item menu-close href="#/app/friends">
+        <ion-item menu-close href="#/app/friends" ng-show="Session.isLoggedIn()">
           Friends
         </ion-item>
-        <ion-item menu-close href="#/app/items">
+        <ion-item menu-close href="#/app/items" ng-show="Session.isLoggedIn()">
           Items
-        </ion-item>        
-        <ion-item menu-close href="#/app/transactions?type=borrowers">
-          Who borrow your stuff
         </ion-item>
-        <ion-item menu-close href="#/app/transactions?type=lenders">
-          Who lend you stuff
-        </ion-item>        
-        <ion-item menu-close href="#/app/" ng-show="Session.isLoggedIn()">
+        <ion-item menu-close href="#/app/transactions?type=borrowers" ng-show="Session.isLoggedIn()">
+          Who borrowed your stuff
+        </ion-item>
+        <ion-item menu-close href="#/app/transactions?type=lenders"  ng-show="Session.isLoggedIn()">
+          Who lent you stuff
+        </ion-item>
+        <ion-item menu-close ng-click="logout()" ng-show="Session.isLoggedIn()">
           Log Out
-        </ion-item>                    
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>

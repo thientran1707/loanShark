@@ -133,7 +133,7 @@ app.run(function($ionicPlatform) {
   })      
 
   .state('app.message', {
-    url: '/message',
+    url: '/message/:friendId?itemId=:itemName',
     views: {
       'menuContent': {
         templateUrl: 'templates/message.html',

@@ -1,7 +1,8 @@
 app.controller("MessageCtrl", [
   "$http",
   "$scope",
-  function($http, $scope) {
+  "$stateParams",
+  function($http, $scope, $stateParams) {
 
     $scope.message = {number: '', content: ''};
 

@@ -4,6 +4,7 @@ var RCSDK = require('rcsdk');
 var passport = require('passport');
 var User = require('../models/User');
 var Loan = require('../models/Loan');
+var UserController = require('../controllers/UserController.js');
 
 var rcsdk = new RCSDK({
     server: 'https://platform.devtest.ringcentral.com',
@@ -26,6 +27,7 @@ router.post('/signup', function(req, res, next) {
       var newUser = User({
         userName: req.body.username,
         password: req.body.password,
+        phone: req.body.phone
       });
 
       newUser.save(function(err) {
@@ -33,10 +35,18 @@ router.post('/signup', function(req, res, next) {
           throw err;
         }
         console.log('User created!');
-        res.end();
+        User.findOne({userName: req.body.username}, function(err, user) {
+          console.log('sending user data now');
+          res.json(user);
+        });
       });
     }
   });
+});
+
+router.post('/updateInfo', function(req, res, next) {
+  console.log('requesting updateInfo', req.body);
+  UserController.update(req.body, res);
 });
 
 router.get('/login', function(req, res, next) {
@@ -66,12 +76,11 @@ router.post('/sendMessage', function(req, res, next) {
       }
   }).then(function(response) {
       console.log('Success: ', response.data.id);
-      //alert('Success: ' + response.data.id);
-      res.status(200).json(response);
+      res.end();
   }).catch(function(e) {
       console.log('Error', e.message);
       //alert('Error: ' + e.message);
-      res.status(400).json(e);
+      res.end();
   });
 });
 

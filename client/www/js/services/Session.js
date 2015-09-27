@@ -2,23 +2,20 @@ app.factory("Session", [
 	"$http",
 	function($http){
 
-		var session = {},
-				online = false;
+		var session = {};
 
 		return {
 
 			isLoggedIn: function() {
-				return online;
+				return sessionStorage.session;
 			},
 
 			login: function(object) {
-				online = true;
-				console.log(object);
 				sessionStorage.session = JSON.stringify(object);
 			},
 
 			logOut: function() {
-				online = false;
+				delete sessionStorage.session;
 			},
 
 			getSession: function() {
