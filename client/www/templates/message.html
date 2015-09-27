@@ -1,0 +1,19 @@
+<ion-view view-title="Message">
+  <ion-content>
+    <form ng-submit="sendMessage()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">To</span>
+          <input type="text" ng-model="message.number">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Message</span>
+          <input type="text" width="300" height="300" ng-model="message.content">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Send</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
