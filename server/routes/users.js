@@ -4,6 +4,7 @@ var RCSDK = require('rcsdk');
 var passport = require('passport');
 var User = require('../models/User');
 var Loan = require('../models/Loan');
+var UserController = require('../controllers/UserController.js');
 
 var rcsdk = new RCSDK({
     server: 'https://platform.devtest.ringcentral.com',
@@ -37,6 +38,11 @@ router.post('/signup', function(req, res, next) {
       });
     }
   });
+});
+
+router.post('/updateInfo', function(req, res, next) {
+  console.log('requesting updateInfo', req.body);
+  UserController.update(req.body, res);
 });
 
 router.get('/login', function(req, res, next) {

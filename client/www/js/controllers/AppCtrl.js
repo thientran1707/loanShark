@@ -44,8 +44,13 @@ app.controller('AppCtrl', [
       $http.post("http://localhost:3000/users/login", $scope.loginData)
         .success(function(data){
           console.log(data);
+          if (!data) {
+            alert('WRONG LOGIN INFO');
+          } else {
+          console.log('storing user data');
           Session.login(data);
           $state.go('app.friends');
+          }
         });
 
       // Simulate a login delay. Remove this and replace with your login

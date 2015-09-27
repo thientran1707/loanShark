@@ -22,7 +22,7 @@ UserController.create = function(req, res) {
   var phone = req.body.phone;
   var items = req.body.items;
   var friends = req.body.friends;
-  var createdDate = new Date(); 
+  var createdDate = new Date();
 
   var user = new User({
     userName: userName,
@@ -54,27 +54,30 @@ UserController.get = function(req, res) {
 };
 
 UserController.update = function(req, res) {
+  var userName = req.userName;
+  var password = req.password;
+  var phone = req.telephone;
+  // var items = req.body.items;
+  // var friends = req.body.friends;
 
-  var userName = req.body.userName;
-  var password = req.body.password;
-  var phone = req.body.phone;
-  var items = req.body.items;
-  var friends = req.body.friends; 
-
-  User.findById(id, function(err, user) {
-    if (err) {
+  User.findById(req.id, function(err, user) {
+    if (err || !user) {
+      console.log('ERROR');
       res.status(500).json(err);
     } else {
+      console.log('UPDATE USER');
   	  user.update({
         userName: userName,
         password: password,
         phone: phone,
-        items: items,
-        friends: friends
+        // items: items,
+        // friends: friends
   	  }, function(err, user) {
         if (err) {
+          console.log('ERROR UPDATING');
           res.status(500).json(err);
         } else {
+          console.log('SUCCESSFUL UPDATE');
           res.status(200).json(user);
         }
       });
