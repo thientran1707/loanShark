@@ -16,7 +16,7 @@
         <i class="icon ion-home"></i>
         Home
       </a>
-    </div>    
+    </div>
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
@@ -36,16 +36,16 @@
         </ion-item>
         <ion-item menu-close href="#/app/items" ng-show="Session.isLoggedIn()">
           Items
-        </ion-item>        
-        <ion-item menu-close href="#/app/transactions?type=borrowers" ng-show="Session.isLoggedIn()">
-          Who borrow your stuff
+        </ion-item>
+        <ion-item menu-close href="#/app/transactions?type=borrowers">
+          Who borrowed your stuff
         </ion-item>
         <ion-item menu-close href="#/app/transactions?type=lenders" ng-show="Session.isLoggedIn()">
           Who lend you stuff
-        </ion-item>        
+        </ion-item>
         <ion-item menu-close ng-click="logout()" ng-show="Session.isLoggedIn()">
           Log Out
-        </ion-item>                    
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
