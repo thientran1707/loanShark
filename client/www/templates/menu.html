@@ -40,10 +40,10 @@
         <ion-item menu-close href="#/app/items" ng-show="Session.isLoggedIn()">
           Items
         </ion-item>
-        <ion-item menu-close href="#/app/transactions?type=borrowers">
+        <ion-item menu-close href="#/app/transactions?type=borrowers" ng-show="Session.isLoggedIn()">
           Who borrowed your stuff
         </ion-item>
-        <ion-item menu-close href="#/app/transactions?type=lenders">
+        <ion-item menu-close href="#/app/transactions?type=lenders"  ng-show="Session.isLoggedIn()">
           Who lent you stuff
         </ion-item>
         <ion-item menu-close ng-click="logout()" ng-show="Session.isLoggedIn()">

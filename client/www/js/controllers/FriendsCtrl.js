@@ -3,7 +3,8 @@ app.controller("FriendsCtrl", [
 	"Friends", 
 	"Utility",
 	"Message",
-	function($scope, Friends, Utility, Message) {
+	"$ionicPopup",
+	function($scope, Friends, Utility, Message, $ionicPopup) {
 
 		Friends.get().then(function(data){
 			console.log(data);
@@ -12,7 +13,12 @@ app.controller("FriendsCtrl", [
 		$scope.Utility = Utility;
 
 		$scope.sendMessage = function(friend) {
-			Message.sendMessage(friend.phone, "all");
+			Message.sendMessage(friend.phone, "all").then(function(){
+				$ionicPopup.alert({
+			     title: 'Text sent successfully!',
+			     template: 'Message sent!'
+			   });			
+			});
 		};
 
 	}
