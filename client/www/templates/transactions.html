@@ -7,9 +7,16 @@
 					<div class="handle"></div>
 				</div>
 			</label>
-			<ion-item ng-repeat="item in items" href="#/app/transactions/{{item}}">
-				{{ showItem(item) }}
-			</ion-item>
+			<div ng-if="doShowItemTimeView()">
+				<ion-item ng-repeat="item in itemsTimeView" href="#/app/transactions/{{item}}">
+					{{ showItemTimeView(item) }}
+				</ion-item>
+			</div>
+			<div ng-if="doShowItemGroupView()">
+				<ion-item ng-repeat="item in itemsGroupView" href="#/app/transactions/{{item}}">
+					{{ showItemGroupView(item) }}
+				</ion-item>
+			</div>
 	    </ion-list>
   	</ion-content>
 </ion-view>
