@@ -8,7 +8,7 @@ var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/User');
-var cors = require("cors");
+//var cors = require("cors");
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -18,7 +18,7 @@ var Controllers = require('./controllers');
 
 var app = express();
 
-app.use(cors());
+//app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,7 +37,7 @@ app.get('/api/users/getLenders/:id', Controllers.User.getLenders);
 app.post('/api/users', Controllers.User.create);
 app.put('/api/users/:id', Controllers.User.update) ;
 app.delete('/api/users/:id', Controllers.User.delete);
-  
+
 /* Items */
 app.get('/api/items', Controllers.Item.retrieve);
 app.post('/api/items', Controllers.Item.create);
@@ -59,20 +59,18 @@ app.use('/', routes);
 app.use('/users', users);
 
 passport.serializeUser(function(user, done) {
-  console.log('serializing user');
-  done(null, user);
+  console.log('serializing user', user);
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(user, done) {
   console.log('deserializing user');
-  done(null, user);
+  done(null, user.id);
 });
 
 passport.use(new LocalStrategy(function(username, password, done) {
-  console.log('hello, passport', username, password);
   process.nextTick(function() {
     User.findOne({userName: username}, function(err, user) {
-      console.log('user data is ', user);
       if (!user) {
         console.log('This user doesn\'t exist!');
         return done(err);
@@ -82,7 +80,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
           return done(err);
         } else {
           console.log('Authentication success!');
-          console.log(done);
           return done(err, user);
         }
       }
