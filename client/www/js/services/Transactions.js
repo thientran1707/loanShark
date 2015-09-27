@@ -34,12 +34,19 @@ app.factory("Transactions", [
 				} else {
 					// do api call
 					var id = Session.getCurrentId();
-					$http.get("http://localhost:3000/api/users/getBorrowers/" + id)
-						.success(function(data){
-							deferred.resolve(data);
-						});
+					if (type == "borrowers") {
+						$http.get("http://localhost:3000/api/users/getBorrowers/" + id)
+							.success(function(data){
+								deferred.resolve(data);
+							});
+					} else {
+						$http.get("http://localhost:3000/api/users/getLenders/" + id)
+							.success(function(data){
+								deferred.resolve(data);
+							});
+					}
+					return deferred.promise;
 				}
-				return deferred.promise;
 			}
 
 		};
