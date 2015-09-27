@@ -27,6 +27,7 @@ router.post('/signup', function(req, res, next) {
       var newUser = User({
         userName: req.body.username,
         password: req.body.password,
+        phone: req.body.phone
       });
 
       newUser.save(function(err) {
