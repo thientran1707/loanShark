@@ -34,7 +34,7 @@ app.controller('AppCtrl', [
     $scope.doLogin = function() {
       console.log('Doing login', $scope.loginData);
 
-      $http.post("http://localhost:3000/login/", $scope.loginData)
+      $http.post("http://localhost:3000/users/login", $scope.loginData)
         .success(function(data){
           Session.login($scope.loginData);
           console.log("i am in");
