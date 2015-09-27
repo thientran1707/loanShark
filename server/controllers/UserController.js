@@ -2,6 +2,8 @@
 
 var User = require('../models/User');
 var Loan = require('../models/Loan');
+var Item = require('../models/Item');
+
 var UserController = {};
 
 UserController.retrieve = function(req, res) {
