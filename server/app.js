@@ -30,31 +30,29 @@ app.use(express.static(path.join(__dirname, '/../client/www')));
 console.log('Start connecting to database!');
 db.start();
 
-  /* User */
-  app.get('/api/users', Controllers.User.retrieve);
-  app.get('/api/users/:id', Controllers.User.get);
-  app.post('/api/users', Controllers.User.create);
-  //app.post('/api/users/login');
-  //app.post('/api/users/logout');
-  app.put('/api/users/:id', Controllers.User.update) ;
-  app.delete('/api/users/:id', Controllers.User.delete);
+/* User */
+app.get('/api/users', Controllers.User.retrieve);
+app.get('/api/users/:id', Controllers.User.get);
+app.post('/api/users', Controllers.User.create);
+app.put('/api/users/:id', Controllers.User.update) ;
+app.delete('/api/users/:id', Controllers.User.delete);
   
-  /* Items */
-  app.get('/api/items', Controllers.Item.retrieve);
-  app.post('/api/items', Controllers.Item.create);
-  app.get('/api/items/:id', Controllers.Item.get);
-  app.put('/api/items/:id', Controllers.Item.update);
-  app.delete('/api/items/:id', Controllers.Item.delete);
+/* Items */
+app.get('/api/items', Controllers.Item.retrieve);
+app.post('/api/items', Controllers.Item.create);
+app.get('/api/items/:id', Controllers.Item.get);
+app.put('/api/items/:id', Controllers.Item.update);
+app.delete('/api/items/:id', Controllers.Item.delete);
 
-  /* Loans */
-  app.get('/api/loans', Controllers.Loan.retrieve);
-  app.post('/api/loans', Controllers.Loan.create);
-  app.get('/api/loans/:id', Controllers.Loan.get);
-  app.put('/api/loans/:id', Controllers.Loan.update);
-  app.delete('/api/loans/:id', Controllers.Loan.delete);
+/* Loans */
+app.get('/api/loans', Controllers.Loan.retrieve);
+app.post('/api/loans', Controllers.Loan.create);
+app.get('/api/loans/:id', Controllers.Loan.get);
+app.put('/api/loans/:id', Controllers.Loan.update);
+app.delete('/api/loans/:id', Controllers.Loan.delete);
 
-app.use('/', routes);
-app.use('/users', users);
+//app.use('/', routes);
+//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -69,22 +67,14 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    res.status(err.status || 500).json(err);
   });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+  res.status(err.status || 500).json(err);
 });
 
 

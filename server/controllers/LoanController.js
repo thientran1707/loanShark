@@ -4,14 +4,13 @@ var Loan = require('../models/Loan');
 var LoanController = {};
 
 LoanController.retrieve = function(req, res) {
-  Loan.find({})
-    .then(function(err, loans) {
-      if (err) {
-      	res.status(500).json(err);
-      } else {
-      	res.status(200).json(loans);
-      }
-    });  
+  Loan.find({}, function(err, loan) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(loan);
+    }
+  });
 };
 
 LoanController.create = function(req, res) {
@@ -29,23 +28,23 @@ LoanController.create = function(req, res) {
     dueDate: dueDate
   });
 
-  Loan.save(function(err) {
-  	if (err) {
-  	  res.status(500).json(err);
-  	} else {
-  	  res.status(200).json(loan);
-  	}
+  Loan.save(function(err, loan) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(loan);
+    }
   });
 };
 
 LoanController.get = function(req, res) {
   var id = req.params.id;
   Loan.findById(id, function(err, loan) {
-  	if (err) {
-  	  res.status(500).json(err);
-  	} else {
-  	  res.status(200).json(loan);
-  	}
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(loan);
+    }
   });
 };
 
@@ -59,40 +58,36 @@ LoanController.update = function(req, res) {
 
   Loan.findById(id, function(err, loan) {
   	if (err) {
-      res.status(500).json(loan);
-  	} else {
-  	  loan.update({
+      res.status(500).json(err);
+    } else {
+      loan.update({
         item: item,
         owner: owner,
         borrower: borrower,
         borrowDate: borrowDate,
         dueDate: dueDate
   	  }, function(err, loan) {
-  	    if (err) {
-  	  	  res.status(500).json(err);
-  	    } else {
-  	  	  res.status(200).json(loan);
-  	    }
-  	  });
-  	}
+          if (err) {
+            res.status(500).json(err);
+          } else {
+            res.status(200).json(loan);
+          }
+      });
+    }
   });
 };
 
 LoanController.delete = function(req, res) {
   var id = req.params.id;
 
-  Loan.findById(id, function(err, loan) {
-  	if (err) {
-  	  res.status(500).json(err);
-  	} else {
-  	  loan.remove(function(err, loan) {
-  	  	if (err) {
-  	  	  res.status(500).json(err);
-  	  	} else {
-  	  	  res.status(200).json(loan);
-  	  	}
-  	  });
-  	}
+  Loan.findById(id, function(loan) {
+  	loan.remove(function(loan) {
+  	  res.status(200).json(loan);
+  	}, function(err) {
+      res.status(500).json(err);
+    });
+  }, function(err) {
+    res.status(500).json(err);
   });
 };
 
