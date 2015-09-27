@@ -1,0 +1,13 @@
+<ion-view view-title="Items">
+  <ion-content>
+    <ion-list>
+      <a class="button button-icon ion-plus" ng-click="newItem()">New Item</a>    
+      <ion-item ng-repeat="item in items">
+        {{item.name}}
+        <div>
+          Description: {{ item.description || "No Description" }}
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic']);
+var app = angular.module('starter', ['ionic', 'ionic-timepicker']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,15 +32,6 @@ app.run(function($ionicPlatform) {
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
   .state('app.profile', {
       url: '/profile',
       views: {
@@ -52,7 +43,7 @@ app.run(function($ionicPlatform) {
     })
 
   .state('app.transactions', {
-    url: '/transactions',
+    url: '/transactions?type=:borrowerType',
     views: {
       'menuContent': {
         templateUrl: 'templates/transactions.html',
@@ -110,6 +101,36 @@ app.run(function($ionicPlatform) {
       }
     }
   })
+
+  .state('app.add_transaction', {
+    url: '/transactions/add?type=:borrowerType',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/add_transaction.html',
+        controller: "AddTransactionCtrl"
+      }
+    }
+  })
+
+  .state('app.items', {
+    url: '/items',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/items.html',
+        controller: 'ItemsCtrl'
+      }
+    }
+  })    
+
+  .state('app.new_item', {
+    url: '/items/new',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/new_item.html',
+        controller: 'NewItemCtrl'
+      }
+    }
+  })      
 
   .state('app.message', {
     url: '/message',
