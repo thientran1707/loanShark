@@ -1,10 +1,15 @@
 <ion-view view-title="Transactions">
-  <ion-content>
-    <ion-list>
-
-		<ion-item ng-repeat="transaction in transactions" href="#/app/transactions/{{transaction.id}}">
-			{{listTransactions(transaction)}}
-		</ion-item>
-    </ion-list>
-  </ion-content>
+  	<ion-content>
+	    <ion-list>
+	        <label class="toggle">
+			<input type="checkbox" ng-click="switchView()">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
+			<ion-item ng-repeat="item in items" href="#/app/transactions/{{item}}">
+				{{ showItem(item) }}
+			</ion-item>
+	    </ion-list>
+  	</ion-content>
 </ion-view>

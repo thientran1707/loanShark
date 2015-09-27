@@ -3,29 +3,33 @@
  */
 app.controller('TransactionsCtrl', [
 	"$scope",
+	"$stateParams",
 	"Transactions",
-	function($scope, Transactions) {
+	function($scope, $stateParams, Transactions) {
 
-		_.each(Transactions.get(), function(transaction, index) {
-			_.each(transaction.items, function(item, index) {
+		function getItem(Transactions, state) {
+			var i = 0;
 
+			$scope.items = new Object();
+			_.each(Transactions.get(), function(transaction, index) {
+				_.each(transaction.items, function(item, index) {
+					item.id = i;
+					item.hostname = transaction.name;
+					$scope.items[i] = item;
+					i = i + 1;
+				});
 			});
-		});
-
-		$scope.transactions = Transactions.get();
-		console.log($scope.transactions);
-
-		$scope.listTransactions = function(transaction) {
-			if (transaction.items.length == 1) {
-				return transaction.name + ": " + showItem(transaction.items[0]);
-			} else {
-				return transaction.name + ": " + transaction.items.length + ' items';
-			}
-		};
-
-		function showItem(item) {
-			return item.name + "," + item.category + "," + item.dateDue;
 		}
+
+		getItem(Transactions, $stateParams);
+
+		$scope.showItem = function(item) {
+			return item.hostname + ":" + item.name + "," + item.category + "," + item.dateDue;
+		}
+
+		$scope.switchView = function() {
+
+		};
 	}
 ]);
 
