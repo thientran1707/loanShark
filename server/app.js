@@ -34,6 +34,7 @@ app.get('/api/users', Controllers.User.retrieve);
 app.get('/api/users/:id', Controllers.User.get);
 app.get('/api/users/getBorrowers/:id', Controllers.User.getBorrowers);
 app.get('/api/users/getLenders/:id', Controllers.User.getLenders);
+app.get('/api/users/borrow/:id/:borrowerId', Controllers.User.getBorrowItems);
 app.post('/api/users', Controllers.User.create);
 app.put('/api/users/:id', Controllers.User.update) ;
 app.delete('/api/users/:id', Controllers.User.delete);
