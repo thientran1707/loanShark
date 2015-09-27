@@ -70,6 +70,16 @@ app.run(function($ionicPlatform) {
       }
     })  
 
+    .state('app.home', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/home.html',
+          controller: 'HomeCtrl'
+        }
+      }
+    })      
+
     .state('app.friends', {
       url: '/friends',
       views: {
@@ -90,5 +100,5 @@ app.run(function($ionicPlatform) {
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/transactions');
+  $urlRouterProvider.otherwise('/app/');
 });
