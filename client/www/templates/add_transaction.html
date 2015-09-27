@@ -1,33 +1,41 @@
-<ion-view view-title="Borrower">
+<ion-view view-title="Transaction">
   <ion-content scroll="false">
-    <form ng-submit="updateUser(user)">
+    <form ng-submit="addTransaction(transaction)">
       <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="user.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Telephone</span>
-          <input type="text" ng-model="user.telephone">
-        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Friends
+          </div>
+          <select ng-model="transaction.borrower">
+            <option ng-repeat="friend in friends" value="{{friend._id}}">{{friend.userName}}</option>
+          </select>
+        </label> 
         <label class="item item-input item-select">
           <div class="input-label">
             Items
           </div>
-          <select>
+          <select ng-model="transaction.item">
             <option ng-repeat="item in items" value="{{item._id}}">{{item.name}}</option>
           </select>
         </label>        
         <label class="item item-input">
           <span class="input-label">Due Date</span>
-          <input type="date" class="datepicker" ng-model="user.dateDue" />
+          <input type="date" class="datepicker" ng-model="transaction.dueDate" />
         </label>                      
         <label class="item item-input">
           <span class="input-label">Time</span>
-          <input type="date" class="datepicker" ng-model="user.time" />
-        </label>         
+          <input type="time" ng-model="transaction.dueTime">
+        </label>  
+        <label class="item item-input">
+          <span class="input-label">Remind Date</span>
+          <input type="date" class="datepicker" ng-model="transaction.remindDate" />
+        </label>                      
+        <label class="item item-input">
+          <span class="input-label">Time</span>
+          <input type="time" ng-model="transaction.remindTime">
+        </label>                 
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Update</button>
+          <button class="button button-block button-positive" type="submit">Create</button>
         </label>        
       </div>
     </form>

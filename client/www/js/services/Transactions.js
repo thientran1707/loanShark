@@ -34,6 +34,7 @@ app.factory("Transactions", [
 				} else {
 					// do api call
 					var id = Session.getCurrentId();
+<<<<<<< HEAD
 					if (type == "borrowers") {
 						$http.get("http://localhost:3000/api/users/getBorrowers/" + id)
 							.success(function(data){
@@ -46,6 +47,13 @@ app.factory("Transactions", [
 							});
 					}
 					return deferred.promise;
+=======
+					$http.get("http://localhost:3000/api/users/getBorrowers/" + id)
+						.success(function(data){
+							console.log(data);
+							deferred.resolve(data);
+						});
+>>>>>>> 6525fd0316b5b18e405fb609d4ad771063918182
 				}
 			}
 

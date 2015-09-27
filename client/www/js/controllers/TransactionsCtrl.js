@@ -29,12 +29,14 @@ app.controller('TransactionsCtrl', [
 
 		function getAPIItems() {
 			Transactions.get($scope.type).then(function(data){
+				console.log(data);
 				_.each(Transactions.get(), function(transaction, index) {
 				$scope.itemsGroupView[index] = transaction;
 					_.each(transaction.items, function(item, index) {
 						item.id = index;
 						item.hostname = transaction.name;
 						$scope.itemsTimeView[index] = item;
+						console.log($scope.itemsTimeView);
 						i = i + 1;
 					});		
 				});		
@@ -69,9 +71,9 @@ app.controller('TransactionsCtrl', [
 		};
 
 		$scope.switchTest = function() {
-			console.log($scope.type);
 			$state.go("app.add_transaction", {type: $scope.type});
 		};
+
 	}
 
 ]);
