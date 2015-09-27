@@ -8,7 +8,7 @@
 					<div class="handle"></div>
 				</div>
 			</label>
-			<button class="button button-icon ion-plus" ng-click="newProject()">
+			<a class="button button-icon ion-plus" ng-click="switchTest()"></a>
 		</div>
 			<div ng-if="doShowItemTimeView()">
 				<ion-item ng-repeat="item in itemsTimeView" href="#/app/transactions/{{item}}">

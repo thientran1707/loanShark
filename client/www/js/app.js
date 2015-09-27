@@ -43,7 +43,7 @@ app.run(function($ionicPlatform) {
     })
 
   .state('app.transactions', {
-    url: '/transactions',
+    url: '/transactions?type=:borrowerType',
     views: {
       'menuContent': {
         templateUrl: 'templates/transactions.html',
@@ -102,15 +102,35 @@ app.run(function($ionicPlatform) {
     }
   })
 
-  .state('app.borrower', {
-    url: '/borrowers/:friendId',
+  .state('app.new_transaction', {
+    url: '/transactions/new?type=:borrowerType',
     views: {
       'menuContent': {
-        templateUrl: 'templates/borrower.html',
-        controller: "BorrowerCtrl"
+        templateUrl: 'templates/new_transaction.html',
+        controller: "NewTransactionCtrl"
       }
     }
-  })  
+  })
+
+  .state('app.items', {
+    url: '/items',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/items.html',
+        controller: 'ItemsCtrl'
+      }
+    }
+  })    
+
+  .state('app.new_item', {
+    url: '/items/new',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/new_item.html',
+        controller: 'NewItemCtrl'
+      }
+    }
+  })      
 
   .state('app.message', {
     url: '/message',

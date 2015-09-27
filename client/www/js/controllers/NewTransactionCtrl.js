@@ -1,8 +1,9 @@
-app.controller("BorrowerCtrl", [
+app.controller("NewTransactionCtrl", [
 	"$scope",
 	"$stateParams",
 	"$http",
-	function($scope, $stateParams, $http) {
+	"Session",
+	function($scope, $stateParams, $http, Session) {
 
 		$scope.timePicker = {
 			callback: function(val) {

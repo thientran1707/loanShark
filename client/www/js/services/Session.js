@@ -18,6 +18,10 @@ app.factory("Session", [
 
 			logOut: function() {
 				online = false;
+			},
+
+			getCurrentId: function() {
+				return "560783443deb8b9527925c7c";
 			}
 
 		}

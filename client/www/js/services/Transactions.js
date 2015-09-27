@@ -2,7 +2,8 @@ app.factory("Transactions", [
 	"$http",
 	"Config",
 	"$q",
-	function($http, Config, $q) {
+	"Session",
+	function($http, Config, $q, Session) {
 
 		function getMock() {
 			return [
@@ -29,15 +30,16 @@ app.factory("Transactions", [
 				var deferred = $q.defer();
 				if (Config.mock) {
 					// get mock data
-					return getMock();
+					return deferred.resolve(getMock());
 				} else {
 					// do api call
-					$http.get("http://localhost:3000/api/users/getBorrowers/:id")
+					var id = Session.getCurrentId();
+					$http.get("http://localhost:3000/api/users/getBorrowers/" + id)
 						.success(function(data){
 							deferred.resolve(data);
 						});
-					return deferred.promise;
 				}
+				return deferred.promise;
 			}
 
 		};
