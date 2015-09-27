@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var db = require('./models');
+var Controllers = require('./controllers');
 
 var app = express();
 
@@ -28,6 +29,29 @@ app.use(express.static(path.join(__dirname, '/../client/www')));
 
 console.log('Start connecting to database!');
 db.start();
+
+  /* User */
+  app.get('/api/users', Controllers.User.retrieve);
+  app.get('/api/users/:id', Controllers.User.get);
+  app.post('/api/users', Controllers.User.create);
+  //app.post('/api/users/login');
+  //app.post('/api/users/logout');
+  app.put('/api/users/:id', Controllers.User.update) ;
+  app.delete('/api/users/:id', Controllers.User.delete);
+  
+  /* Items */
+  app.get('/api/items', Controllers.Item.retrieve);
+  app.post('/api/items', Controllers.Item.create);
+  app.get('/api/items/:id', Controllers.Item.get);
+  app.put('/api/items/:id', Controllers.Item.update);
+  app.delete('/api/items/:id', Controllers.Item.delete);
+
+  /* Loans */
+  app.get('/api/loans', Controllers.Loan.retrieve);
+  app.post('/api/loans', Controllers.Loan.create);
+  app.get('/api/loans/:id', Controllers.Loan.get);
+  app.put('/api/loans/:id', Controllers.Loan.update);
+  app.delete('/api/loans/:id', Controllers.Loan.delete);
 
 app.use('/', routes);
 app.use('/users', users);

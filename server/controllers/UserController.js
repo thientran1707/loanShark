@@ -15,26 +15,18 @@ UserController.retrieve = function(req, res) {
 };
 
 UserController.create = function(req, res) {
-  //var firstName = req.body.firstName;
-  //var lastName = req.body.lastName;
   var userName = req.body.userName;
   var password = req.body.password;
   var phone = req.body.phone;
-  //var email = req.body.email;
   var items = req.body.items;
-  var friends = req.body.friends;
-  //var token = req.body.token; 
+  var friends = req.body.friends; 
 
   var user = new User({
-    //firstName: firstName,
-    //lastName: lastName,
     userName: userName,
     password: password,
     phone: phone,
-    //email: email,
     items: items,
     friends: friends
-    //token: token
   });
 
   user.save(function(err) {
@@ -59,30 +51,22 @@ UserController.get = function(req, res) {
 
 UserController.update = function(req, res) {
 
-  //var firstName = req.body.firstName;
-  //var lastName = req.body.lastName;
   var userName = req.body.userName;
   var password = req.body.password;
   var phone = req.body.phone;
-  //var email = req.body.email;
   var items = req.body.items;
-  var friends = req.body.friends;
-  //var token = req.body.token; 
+  var friends = req.body.friends; 
 
   User.findById(id, function(err, user) {
   	if (err) {
       res.status(500).json(User);
   	} else {
   	  user.update({
-        //firstName: firstName,
-        //lastName: lastName,
         userName: userName,
         password: password,
         phone: phone,
-        //email: email,
         items: items,
         friends: friends
-        //token: token
   	  }, function(err, user) {
   	    if (err) {
   	  	  res.status(500).json(err);
@@ -105,7 +89,7 @@ UserController.delete = function(req, res) {
   	  	if (err) {
   	  	  res.status(500).json(err);
   	  	} else {
-  	  	  res.status(200).json({message: 'deleted', user});
+  	  	  res.status(200).json(user);
   	  	}
   	  });
   	}

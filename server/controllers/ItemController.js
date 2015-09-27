@@ -1,6 +1,6 @@
 'use strict';
 
-var Item = require('./models/Item');
+var Item = require('../models/Item');
 var ItemController = {};
 
 ItemController.retrieve = function(req, res) {
@@ -77,7 +77,7 @@ ItemController.delete = function(req, res) {
   	  	if (err) {
   	  	  res.status(500).json(err);
   	  	} else {
-  	  	  res.status(200).json({message: 'deleted', item});
+  	  	  res.status(200).json(item);
   	  	}
   	  });
   	}
