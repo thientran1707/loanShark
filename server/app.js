@@ -31,6 +31,8 @@ db.start();
 /* User */
 app.get('/api/users', Controllers.User.retrieve);
 app.get('/api/users/:id', Controllers.User.get);
+app.get('/api/users/getBorrowers/:id', Controllers.User.getBorrowers);
+app.get('/api/users/getLenders/:id', Controllers.User.getLenders);
 app.post('/api/users', Controllers.User.create);
 app.put('/api/users/:id', Controllers.User.update) ;
 app.delete('/api/users/:id', Controllers.User.delete);
