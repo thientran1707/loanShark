@@ -18,14 +18,11 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="login()">
+        <ion-item menu-close ng-click="login()" ng-show="!Session.isLoggedIn()">
           Login
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
-        </ion-item>
         <ion-item menu-close href="#/app/browse">
-          Browse
+          Profile
         </ion-item>
         <ion-item menu-close href="#/app/friends">
           Friends
@@ -36,6 +33,12 @@
         <ion-item menu-close href="#/app/transactions?type=lenders">
           Lenders
         </ion-item>        
+        <ion-item menu-close href="#/app/logout" ng-show="Session.isLoggedIn()">
+          Log Out
+        </ion-item>     
+        <ion-item menu-close href="#/app/register">
+          Register
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>

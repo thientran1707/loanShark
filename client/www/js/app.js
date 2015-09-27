@@ -60,6 +60,16 @@ app.run(function($ionicPlatform) {
     }
   })
 
+    .state('app.register', {
+      url: '/register',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/register.html',
+          controller: 'RegisterCtrl'
+        }
+      }
+    })  
+
     .state('app.friends', {
       url: '/friends',
       views: {
