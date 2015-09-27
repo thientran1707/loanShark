@@ -1,4 +1,4 @@
-<ion-view view-title="Profile">
+<ion-view view-title="Borrower">
   <ion-content scroll="false">
     <form ng-submit="updateUser(user)">
       <div class="list">
@@ -13,6 +13,14 @@
         <label class="item item-input">
           <span class="input-label">Telephone</span>
           <input type="text" ng-model="user.telephone">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Due Date</span>
+          <input type="date" class="datepicker" ng-model="user.dateDue" />
+        </label>                      
+        <label class="item item-input">
+          <span class="input-label">Time</span>
+          <input type="date" class="datepicker" ng-model="user.time" />
         </label>         
         <label class="item">
           <button class="button button-block button-positive" type="submit">Update</button>

@@ -1,8 +1,8 @@
 app.controller('AppCtrl', [
   "$scope", "$ionicModal", "$timeout", "Session", "$http",
-  "$stateParams",
+  "$stateParams", "$state",
   function($scope, $ionicModal, $timeout, Session, $http,
-    $stateParams) {
+    $stateParams, $state) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -39,7 +39,7 @@ app.controller('AppCtrl', [
       $http.post("http://localhost:3000/login", $scope.loginData)
         .success(function(data){
           Session.login($scope.loginData);
-          $stateParams.go
+          $state.go('app.friends');
         });
 
       // Simulate a login delay. Remove this and replace with your login

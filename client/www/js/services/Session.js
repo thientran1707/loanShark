@@ -17,7 +17,7 @@ app.factory("Session", [
 			},
 
 			logOut: function() {
-				session.online = false;
+				online = false;
 			}
 
 		}
