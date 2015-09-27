@@ -5,7 +5,6 @@ app.controller("MessageCtrl", [
   function($http, $scope, $stateParams) {
 
     $scope.message = {number: '', content: ''};
-    debugger;
 
     $scope.sendMessage = function() {
       console.log('making a post request', $scope.message);

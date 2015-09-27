@@ -27,6 +27,11 @@ app.controller('AppCtrl', [
       $scope.modal.hide();
     };
 
+    $scope.logout = function() {
+      Session.logOut();
+      $state.go("app.home");
+    };
+
     // Open the login modal
     $scope.login = function() {
       $scope.modal.show();
@@ -38,6 +43,7 @@ app.controller('AppCtrl', [
 
       $http.post("http://localhost:3000/users/login", $scope.loginData)
         .success(function(data){
+          console.log(data);
           Session.login(data);
           $state.go('app.friends');
         });

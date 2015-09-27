@@ -1,7 +1,7 @@
 <ion-view view-title="Friends">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="friend in friends" href="#/app/message/{{friend._id}}?itemId=all">
+      <ion-item ng-repeat="friend in friends" ng-click="sendMessage(friend)">
         {{friend.userName}} - {{ friend.items.length}}
       </ion-item>
     </ion-list>
