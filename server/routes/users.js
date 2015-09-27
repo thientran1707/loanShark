@@ -11,7 +11,7 @@ var rcsdk = new RCSDK({
 });
 var platform = rcsdk.getPlatform();
 
-router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/failure'}), function(req, res, next) {
+router.post('/login', passport.authenticate('local', {successRedirect: '/login', failureRedirect: '/failure'}), function(req, res, next) {
   res.end();
 });
 
@@ -37,33 +37,55 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
+  console.log('we are going to login now');
   platform.authorize({
       username: '18024486659',
       extension: '',
       password: 'hack123#'
   }).then(function(response) {
       console.log('login successful');
-      res.end('login successful');
+      res.redirect('/#/app/transactions');
   }).catch(function(e) {
+      console.log('having an issue logging in ', e);
       alert(e.message  || 'Server cannot authorize user');
   });
 });
 
-/* Testing only */
-/*router.get('/send-test', function(req, res, next) {
+router.post('/sendMessage', function(req, res, next) {
+  console.log('trying to send this message ', req.body);
   platform.post('/account/~/extension/~/sms', {
       body: {
-          from: {phoneNumber:'+18024486659'}, // Your sms-enabled phone number
-          to: [
-              {phoneNumber:'+14088240895'} // Second party's phone number
-          ],
-          text: 'Message content: test'
+        from: {phoneNumber:'+18024486659'}, // Your sms-enabled phone number
+        to: [
+            {phoneNumber: req.body.number} // Second party's phone number
+        ],
+        text: req.body.content
       }
   }).then(function(response) {
       alert('Success: ' + response.data.id);
+      response.end('hi!');
   }).catch(function(e) {
       alert('Error: ' + e.message);
+      response.end('error is ', e);
   });
-});*/
+});
+
+router.get('/sendMessage', function(req, res, next) {
+  platform.post('/account/~/extension/~/sms', {
+      body: {
+        from: {phoneNumber:'+18024486659'}, // Your sms-enabled phone number
+        to: [
+            {phoneNumber: '+14088240895'} // Second party's phone number
+        ],
+        text: 'hello hello hello'
+      }
+  }).then(function(response) {
+      alert('Success: ' + response.data.id);
+      response.end('hi!');
+  }).catch(function(e) {
+      alert('Error: ' + e.message);
+      response.end('error is ', e);
+  });
+});
 
 module.exports = router;
