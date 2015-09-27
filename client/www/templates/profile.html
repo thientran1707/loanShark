@@ -1,6 +1,6 @@
-<ion-view view-title="Register">
+<ion-view view-title="Profile">
   <ion-content scroll="false">
-    <form ng-submit="registerUser(user)">
+    <form ng-submit="updateUser(user)">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Username</span>
@@ -11,7 +11,7 @@
           <input type="text" ng-model="user.password">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" type="submit">Register</button>
+          <button class="button button-block button-positive" type="submit">Update</button>
         </label>        
       </div>
     </form>

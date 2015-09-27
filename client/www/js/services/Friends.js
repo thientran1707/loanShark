@@ -24,7 +24,13 @@ app.factory("Friends", [
 						});
 				}	
 				return deferred.promise;
-			}
+			},
+
+			update: function(user) {
+				var deferred = $q.defer();
+
+				return deferred.promise;
+			},
 
 		};
 

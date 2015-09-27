@@ -41,11 +41,12 @@ app.run(function($ionicPlatform) {
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.profile', {
+      url: '/profile',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/profile.html',
+          controller: "ProfileCtrl"
         }
       }
     })
