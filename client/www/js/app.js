@@ -68,7 +68,17 @@ app.run(function($ionicPlatform) {
           controller: 'RegisterCtrl'
         }
       }
-    })  
+    })
+
+    .state('app.home', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/home.html',
+          controller: 'HomeCtrl'
+        }
+      }
+    })      
 
     .state('app.friends', {
       url: '/friends',
@@ -78,7 +88,7 @@ app.run(function($ionicPlatform) {
           controller: 'FriendsCtrl'
         }
       }
-    })  
+    })
 
   .state('app.single', {
     url: '/transactions/:transactionItem',
@@ -98,8 +108,18 @@ app.run(function($ionicPlatform) {
         controller: 'TransactionGroupCtrl'
       }
     }
+  })
+
+  .state('app.message', {
+    url: '/message',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/message.html',
+        controller: 'MessageCtrl'
+      }
+    }
   });
-  
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/transactions');
+  $urlRouterProvider.otherwise('/app/');
 });
