@@ -4,7 +4,15 @@ app.controller("ProfileCtrl", [
 	"$stateParams",
 	"$ionicPopup",
 	'$http',
-	function($scope, Friends, $stateParams, $ionicPopup, $http) {
+	'Session',
+	function($scope, Friends, $stateParams, $ionicPopup, $http, Session) {
+
+		$scope.userInfo = {
+			userName: 'khoa',
+			password: 'phan',
+			telephone: '14088240895',
+			id: Session.getSession()._id,
+		};
 
 		$scope.updateUser = function(user) {
 			Friends.update(user).then(function(data){
@@ -22,8 +30,9 @@ app.controller("ProfileCtrl", [
 
 		$scope.updateUserTest = function() {
 			console.log('testing');
-			$http.get('http://localhost:3000/users/getInfo').success(function(data) {
-				console.log('the data is ', data);
+			console.log("session data is ", Session.getSession());
+			$http.post('http://localhost:3000/users/updateInfo', $scope.userInfo).then(function(data) {
+				console.log('data is data', data);
 			});
 		};
 
