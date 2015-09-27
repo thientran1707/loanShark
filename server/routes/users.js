@@ -11,8 +11,10 @@ var rcsdk = new RCSDK({
 });
 var platform = rcsdk.getPlatform();
 
-router.post('/login', passport.authenticate('local', {successRedirect: '/login', failureRedirect: '/failure'}), function(req, res, next) {
-  res.end();
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    res.json(user);
+  })(req, res, next);
 });
 
 router.post('/signup', function(req, res, next) {
