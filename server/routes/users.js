@@ -76,12 +76,11 @@ router.post('/sendMessage', function(req, res, next) {
       }
   }).then(function(response) {
       console.log('Success: ', response.data.id);
-      //alert('Success: ' + response.data.id);
-      res.status(200).json(response);
+      res.end();
   }).catch(function(e) {
       console.log('Error', e.message);
       //alert('Error: ' + e.message);
-      res.status(400).json(e);
+      res.end();
   });
 });
 
