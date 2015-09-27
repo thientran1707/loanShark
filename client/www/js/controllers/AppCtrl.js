@@ -40,7 +40,7 @@ app.controller('AppCtrl', [
         .success(function(data){
           console.log('data is ', data);
           Session.login($scope.loginData);
-          $stateParams.go();
+          $state.go('app.friends');
         });
 
       // Simulate a login delay. Remove this and replace with your login
