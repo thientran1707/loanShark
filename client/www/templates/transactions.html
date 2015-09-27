@@ -11,7 +11,7 @@
 			<a class="button button-icon ion-plus" ng-click="switchTest()"></a>
 		</div>
 			<div ng-if="doShowItemTimeView()">
-				<ion-item ng-repeat="item in itemsTimeView" href="#/app/transactions/{{item}}">
+				<ion-item ng-repeat="item in itemsTimeView" href="#/app/transactions/group/{{item}}">
 					{{ showItemTimeView(item) }}
 				</ion-item>
 			</div>

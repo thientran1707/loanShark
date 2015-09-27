@@ -27,6 +27,7 @@ app.factory("Transactions", [
 		return {
 
 			get: function(type) {
+				var returnObject = new Object();
 				var deferred = $q.defer();
 				if (Config.mock) {
 					// get mock data
@@ -40,6 +41,7 @@ app.factory("Transactions", [
 								deferred.resolve(data);
 							});
 					} else {
+						// TODO: do not use right now
 						$http.get("http://localhost:3000/api/users/getLenders/" + id)
 							.success(function(data){
 								deferred.resolve(data);

@@ -17,6 +17,8 @@ app.controller('TransactionsCtrl', [
 		function getItem(Transactions, state) {
 			var i = 0;
 			_.each(Transactions.get($scope.type), function(transaction, index) {
+				$scope.itemsTimeView[index] = transaction;
+				/*
 				$scope.itemsGroupView[i] = transaction;
 				_.each(transaction.items, function(item, index) {
 					item.id = i;
@@ -24,14 +26,16 @@ app.controller('TransactionsCtrl', [
 					$scope.itemsTimeView[i] = item;
 					i = i + 1;
 				});
+*/
 			});
 		}
 
 		function getAPIItems() {
 			Transactions.get($scope.type).then(function(data){
 				console.log(data);
-				_.each(Transactions.get(), function(transaction, index) {
-				$scope.itemsGroupView[index] = transaction;
+				_.each(data, function(transaction, index) {
+					$scope.itemsTimeView[index] = transaction;
+				/*
 					_.each(transaction.items, function(item, index) {
 						item.id = index;
 						item.hostname = transaction.name;
@@ -39,7 +43,8 @@ app.controller('TransactionsCtrl', [
 						console.log($scope.itemsTimeView);
 						i = i + 1;
 					});		
-				});		
+					*/
+				});
 			});
 		}
 
@@ -55,7 +60,8 @@ app.controller('TransactionsCtrl', [
 		};
 
 		$scope.showItemTimeView = function(item) {
-			return item.hostname + ": " + item.name + "," + item.description;
+			return item.userName;
+			//  + "," + item.description;
 		};
 
 		$scope.showItemGroupView = function(item) {
