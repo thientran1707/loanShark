@@ -25,7 +25,7 @@ app.run(function($ionicPlatform) {
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -81,11 +81,21 @@ app.run(function($ionicPlatform) {
     })  
 
   .state('app.single', {
-    url: '/transactions/:transactionId',
+    url: '/transactions/:transactionItem',
     views: {
       'menuContent': {
         templateUrl: 'templates/transaction.html',
         controller: 'TransactionCtrl'
+      }
+    }
+  })
+
+  .state('app.group', {
+    url: '/transactions/group/:transactionItem',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/transactionGroup.html',
+        controller: 'TransactionGroupCtrl'
       }
     }
   });

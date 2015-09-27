@@ -1,0 +1,10 @@
+<ion-view view-title="Transaction">
+	<ion-content>
+		<h1> With {{ name }} </h1>
+		<ion-list>
+			<ion-item ng-repeat="item in items" href="#/app/transactions/{{item}}">
+				{{ showItemInfo(item) }}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

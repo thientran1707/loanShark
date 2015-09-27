@@ -10,7 +10,7 @@ app.controller('TransactionCtrl', [
 
 		console.log($stateParams);
 
-		$scope.item = JSON.parse($stateParams.transactionId);
+		$scope.item = JSON.parse($stateParams.transactionItem);
 		$scope.Utility = Utility;
 	}
 ]);
