@@ -8,7 +8,9 @@ app.controller('TransactionGroupCtrl', [
 	"$q",
 	"Session",
 	"$http",
-	function($scope, $stateParams, $q, Session, $http) {
+	"Message",
+	"$ionicPopup",
+	function($scope, $stateParams, $q, Session, $http, Message, $ionicPopup) {
 
 		console.log($stateParams.transactionItem);
 
@@ -33,7 +35,16 @@ app.controller('TransactionGroupCtrl', [
 
 		// slightly different show item info
 		$scope.showItemInfo = function(item) {
-			return item.name + "," + item.description;
+			return item.name;
+		};
+
+		$scope.sendMessage = function(item) {
+			Message.sendMessage(borrower.phone, item.name).then(function(){
+				$ionicPopup.alert({
+			     title: 'Text sent successfully!',
+			     template: 'Message sent!'
+			   });				
+			});
 		};
 	}
 ]);
