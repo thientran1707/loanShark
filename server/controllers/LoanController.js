@@ -89,7 +89,7 @@ LoanController.delete = function(req, res) {
   	  	if (err) {
   	  	  res.status(500).json(err);
   	  	} else {
-  	  	  res.status(200).json({message: 'deleted', loan});
+  	  	  res.status(200).json(loan);
   	  	}
   	  });
   	}

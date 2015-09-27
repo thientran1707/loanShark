@@ -1,5 +1,26 @@
-<ion-view view-title="Transaction">
-  <ion-content>
-    <h1>Transaction</h1>
-  </ion-content>
+<ion-view view-title="Detail">
+	<ion-content>
+		<ion-item>
+			<div class="item item-button-right">
+    			<h1>{{ item.name }}</h1>
+    			<button class="button button-positive">
+      				Contact info
+    			</button>
+  			</div>
+			<ion-item>
+				category: {{ item.category }}
+				<br>
+				<br>
+				borrowed on: {{ Utility.parseDate(item.borrowDate) }}
+				<br>
+				<br>
+				return on: {{ Utility.parseDate(item.dueDate) }}
+			</ion-item>
+			<ion-item>
+				<button class="button item-button-left button-positive">
+		  			Send Text to {{ item.hostname }}
+				</button>
+			</ion-item>
+		</ion-item>
+	</ion-content>
 </ion-view>

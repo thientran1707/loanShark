@@ -2,6 +2,6 @@
 
 module.exports = {
   Item: require('./ItemController'),
-  Loan: require('./LoanContoller'),
+  Loan: require('./LoanController'),
   User: require('./UserController')
 };

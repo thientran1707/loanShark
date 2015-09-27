@@ -3,28 +3,54 @@
  */
 app.controller('TransactionsCtrl', [
 	"$scope",
+	"$stateParams",
 	"Transactions",
-	function($scope, Transactions) {
+	function($scope, $stateParams, Transactions) {
 
-		_.each(Transactions.get(), function(transaction, index) {
-			_.each(transaction.items, function(item, index) {
+		$scope.isShowItemTimeView = true;
 
+
+		// get both TimeView data and GroupView data at once
+		function getItem(Transactions, state) {
+			var i = 0;
+
+			$scope.itemsTimeView = new Object();
+			$scope.itemsGroupView = new Object();
+			_.each(Transactions.get(), function(transaction, index) {
+				$scope.itemsGroupView[i] = transaction;
+				_.each(transaction.items, function(item, index) {
+					item.id = i;
+					item.hostname = transaction.name;
+					$scope.itemsTimeView[i] = item;
+					i = i + 1;
+				});
 			});
-		});
+		}
 
-		$scope.transactions = Transactions.get();
-		console.log($scope.transactions);
+		getItem(Transactions, $stateParams);
 
-		$scope.listTransactions = function(transaction) {
-			if (transaction.items.length == 1) {
-				return transaction.name + ": " + showItem(transaction.items[0]);
+		$scope.doShowItemTimeView = function() {
+			return $scope.isShowItemTimeView == true;
+		}
+
+		$scope.doShowItemGroupView = function() {
+			return $scope.isShowItemTimeView == false;
+		}
+
+		$scope.showItemTimeView = function(item) {
+			return item.hostname + ": " + item.name + "," + item.category;
+		}
+
+		$scope.showItemGroupView = function(item) {
+			return item.name + ": " + item.items.length;
+		}
+
+		$scope.switchView = function() {
+			if ($scope.isShowItemTimeView == true) {
+				$scope.isShowItemTimeView = false;
 			} else {
-				return transaction.name + ": " + transaction.items.length + ' items';
+				$scope.isShowItemTimeView = true;
 			}
-		};
-
-		function showItem(item) {
-			return item.name + "," + item.category + "," + item.dateDue;
 		}
 	}
 ]);

@@ -29,8 +29,11 @@
         </ion-item>
         <ion-item menu-close href="#/app/transactions?type=borrowers">
           Borrowers
-        </ion-item> 
-        <ion-item menu-close href="#/app/transactions?type=borrowers" ng-show="Session.isLoggedIn()">
+        </ion-item>
+        <ion-item menu-close href="#/app/transactions?type=lenders">
+          Lenders
+        </ion-item>        
+        <ion-item menu-close href="#/app/logout" ng-show="Session.isLoggedIn()">
           Log Out
         </ion-item>                    
       </ion-list>
